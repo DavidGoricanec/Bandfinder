@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "269145812223",
+    "firebase_url": "https://bandfinder-dg.firebaseio.com",
+    "project_id": "bandfinder-dg",
+    "storage_bucket": "bandfinder-dg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269145812223:android:0711dc37db8f6cd1d370ca",
+        "android_client_info": {
+          "package_name": "at.jhj.bandfinder_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269145812223-psgkla77kiuqgg324a0r9fpsvb0fi7cs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "at.jhj.bandfinder_project",
+            "certificate_hash": "d1ef6a703f65e1a8c7212285f18a012a3818155a"
+          }
+        },
+        {
+          "client_id": "269145812223-vi2atbs4g3kk7qlrh6n85gc322da0cu6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGf0-r-7qt18rfVCK_CsKXNMKQv-2enkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269145812223-vi2atbs4g3kk7qlrh6n85gc322da0cu6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
