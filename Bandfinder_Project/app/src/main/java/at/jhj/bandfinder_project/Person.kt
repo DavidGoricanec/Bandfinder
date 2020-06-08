@@ -1,8 +1,9 @@
 package at.jhj.bandfinder_project
 
-import java.util.*
 
-data class Person (    val vorname: String,
-                   val nachname: String,
+data class Person (
+                   val uid: String,
+                   val name: String,
                    var ort: String,
-                   val geburtsdatum: Date)
+                   val profilbildUrl: String
+)
