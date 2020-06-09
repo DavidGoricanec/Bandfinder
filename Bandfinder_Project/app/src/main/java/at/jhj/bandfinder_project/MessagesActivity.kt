@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_messages.*
 
 class MessagesActivity : AppCompatActivity() {
 
@@ -16,7 +17,10 @@ class MessagesActivity : AppCompatActivity() {
 
         verifyUserIsLoggedIn();
 
-
+        activity_messages_btn_new_message.setOnClickListener {
+            val intent = Intent(this, WriteMessageActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun verifyUserIsLoggedIn()
