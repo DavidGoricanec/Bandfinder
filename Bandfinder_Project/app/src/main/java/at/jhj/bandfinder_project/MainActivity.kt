@@ -117,6 +117,10 @@ class MainActivity : AppCompatActivity() {
         db.setValue(user)
             .addOnSuccessListener {
                 Log.d("Main", "User saved to Firebase")
+
+                val intent = Intent(this, MessagesActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
             }.addOnFailureListener {
                 Log.e("Main", "Error: Saving User to DB failed: ${it.message}") }
     }
