@@ -1,9 +1,12 @@
-package at.jhj.bandfinder_project
+package at.jhj.bandfinder_project.Models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-data class Person (
+@Parcelize
+data class Person(
                    val uid: String ="",
                    val name: String = "",
                    var ort: String = "",
                    val profilbildUrl: String = ""
-)
+):Parcelable

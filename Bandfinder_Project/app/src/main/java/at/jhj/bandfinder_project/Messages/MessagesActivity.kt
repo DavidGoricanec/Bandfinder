@@ -1,10 +1,12 @@
-package at.jhj.bandfinder_project
+package at.jhj.bandfinder_project.Messages
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import at.jhj.bandfinder_project.Login.LoginActivity
+import at.jhj.bandfinder_project.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_messages.*
 
@@ -18,7 +20,7 @@ class MessagesActivity : AppCompatActivity() {
         verifyUserIsLoggedIn();
 
         activity_messages_btn_new_message.setOnClickListener {
-            val intent = Intent(this, WriteMessageActivity::class.java)
+            val intent = Intent(this, PersonListMessageActivity::class.java)
             startActivity(intent)
         }
     }
@@ -27,7 +29,8 @@ class MessagesActivity : AppCompatActivity() {
     {
         if (FirebaseAuth.getInstance().uid == null)
         {
-            val intent = Intent(this,LoginActivity::class.java)
+            val intent = Intent(this,
+                LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }

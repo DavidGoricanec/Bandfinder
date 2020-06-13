@@ -1,10 +1,12 @@
-package at.jhj.bandfinder_project
+package at.jhj.bandfinder_project.Login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import at.jhj.bandfinder_project.Messages.MessagesActivity
+import at.jhj.bandfinder_project.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -45,7 +47,8 @@ class LoginActivity : AppCompatActivity() {
                 if(it.isSuccessful)
                 {
                     Log.d("Login", "Login user uid: ${it.result?.user?.uid}")
-                    val intent = Intent(this,MessagesActivity::class.java)
+                    val intent = Intent(this,
+                        MessagesActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                 }

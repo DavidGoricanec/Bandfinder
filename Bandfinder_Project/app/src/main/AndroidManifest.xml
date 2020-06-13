@@ -9,15 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Message_View_Activity"></activity>
-        <activity android:name=".WriteMessageActivity">
+        <activity android:name=".Messages.ChatActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MessagesActivity" />
+                android:value=".Messages.MessagesActivity" />
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".MessagesActivity">
+        <activity android:name=".Messages.Message_Group_View_Activity" />
+        <activity android:name=".Messages.PersonListMessageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Messages.MessagesActivity" />
+        </activity>
+        <activity android:name=".Login.LoginActivity" />
+        <activity android:name=".Login.MainActivity" />
+        <activity android:name=".Messages.MessagesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,23 +1,20 @@
-package at.jhj.bandfinder_project
+package at.jhj.bandfinder_project.Login
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import at.jhj.bandfinder_project.Messages.MessagesActivity
+import at.jhj.bandfinder_project.Models.Person
+import at.jhj.bandfinder_project.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -113,7 +110,12 @@ class MainActivity : AppCompatActivity() {
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val db = FirebaseDatabase.getInstance().getReference("/users/$uid")
 
-        val user = Person(uid, txt_Name.text.toString(), txt_Ort.text.toString(),p_profilbildUrl)
+        val user = Person(
+            uid,
+            txt_Name.text.toString(),
+            txt_Ort.text.toString(),
+            p_profilbildUrl
+        )
         db.setValue(user)
             .addOnSuccessListener {
                 Log.d("Main", "User saved to Firebase")
