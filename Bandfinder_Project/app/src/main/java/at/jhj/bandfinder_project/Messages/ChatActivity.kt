@@ -32,6 +32,6 @@ class ChatActivity : AppCompatActivity() {
 
     private fun sendMsg()
     {
-        
+
     }
 }

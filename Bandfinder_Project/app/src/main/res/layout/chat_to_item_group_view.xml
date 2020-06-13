@@ -30,7 +30,7 @@
         android:maxWidth="240dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/chat_from_item_group_view_image"
+        app:layout_constraintEnd_toStartOf="@+id/chat_to_item_group_view_image"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.511" />
 </androidx.constraintlayout.widget.ConstraintLayout>
