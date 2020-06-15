@@ -95,6 +95,7 @@ class ChatActivity : AppCompatActivity() {
                             adapter.add(ChatItemTo(nachricht.msg, person))
                         }
                     }
+                    activity_chat_chatview.scrollToPosition(adapter.itemCount-1)
                 }
 
                 override fun onChildRemoved(p0: DataSnapshot) {
