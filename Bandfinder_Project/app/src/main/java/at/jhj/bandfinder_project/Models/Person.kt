@@ -8,5 +8,6 @@ data class Person(
                    val uid: String ="",
                    val name: String = "",
                    var ort: String = "",
-                   val profilbildUrl: String = ""
+                   val profilbildUrl: String = "",
+                val instrument: String= ""
 ):Parcelable

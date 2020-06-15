@@ -6,6 +6,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import at.jhj.bandfinder_project.Messages.MessagesActivity
@@ -30,6 +32,16 @@ class MainActivity : AppCompatActivity() {
         //initialize variables
         //btn_verify = findViewById(R.id.btn_register)
 
+        val instrumente = resources.getStringArray(R.array.Instrumente)
+        val spinner = findViewById<Spinner>(R.id.spinner)
+        if (spinner != null) {
+            val adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_item, instrumente
+            )
+            spinner.adapter = adapter
+        }
+
 
         //onclick button
         btn_register.setOnClickListener{
@@ -52,10 +64,11 @@ class MainActivity : AppCompatActivity() {
         val password = txt_password.text.toString();
         val name =  txt_Name.text.toString();
         val ort = txt_Ort.text.toString();
+        val isntrument = findViewById<Spinner>(R.id.spinner).getSelectedItem().toString();
 
-        Log.d("Main","Email: ${email} Password: ${password} Name: ${name} Ort: ${ort}")
+        Log.d("Main","Email: ${email} Password: ${password} Name: ${name} Ort: ${ort} Instrument: ${isntrument}")
 
-        if(password.isEmpty() || email.isEmpty() || name.isEmpty() || ort.isEmpty() || v_profilephotoUri == null) {
+        if(password.isEmpty() || email.isEmpty() || name.isEmpty() || ort.isEmpty() || v_profilephotoUri == null || isntrument == "Gespieltes Instrument wählen:"|| isntrument == null) {
             Toast.makeText(this,"Bitte alle Felder ausfüllen", Toast.LENGTH_SHORT).show()
             Log.i("Main", "Not all Fields are filled out")
             return
@@ -114,7 +127,8 @@ class MainActivity : AppCompatActivity() {
             uid,
             txt_Name.text.toString(),
             txt_Ort.text.toString(),
-            p_profilbildUrl
+            p_profilbildUrl,
+            findViewById<Spinner>(R.id.spinner).getSelectedItem().toString()
         )
         db.setValue(user)
             .addOnSuccessListener {

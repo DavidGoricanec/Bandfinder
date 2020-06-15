@@ -10,4 +10,14 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_login2">Login2Activity</string>
+
+    <string-array name="Instrumente">
+        <item>Gespieltes Instrument wählen:</item>
+        <item>Gitarre</item>
+        <item>Klavier</item>
+        <item>Geige</item>
+        <item>Schlagzeug</item>
+        <item>Bass</item>
+        <item>Anderes</item>
+    </string-array>
 </resources>
