@@ -16,6 +16,8 @@ class UserProfileItem(val person: Person): Item<ViewHolder>()
     override fun bind(viewHolder: ViewHolder, position: Int) {
         //Lade den Text
         viewHolder.itemView.message_view_Name.text = person.name
+        viewHolder.itemView.message_view_Instrument.text = person.instrument
+        viewHolder.itemView.message_view_Ort.text = person.ort
         //Lade das Bild in die Image View
         Picasso.get().load(person.profilbildUrl).into(viewHolder.itemView.message_view_profilephoto)
     }

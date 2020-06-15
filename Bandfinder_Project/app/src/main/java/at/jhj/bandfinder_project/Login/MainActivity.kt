@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import at.jhj.bandfinder_project.Messages.MessagesActivity
+import at.jhj.bandfinder_project.Messages.PersonListMessageActivity
 import at.jhj.bandfinder_project.Models.Person
 import at.jhj.bandfinder_project.R
 import com.google.firebase.auth.FirebaseAuth
@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        supportActionBar?.title = "Registrieren bei Bandfinder!"
 
         //initialize variables
         //btn_verify = findViewById(R.id.btn_register)
@@ -134,7 +136,7 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 Log.d("Main", "User saved to Firebase")
 
-                val intent = Intent(this, MessagesActivity::class.java)
+                val intent = Intent(this, PersonListMessageActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }.addOnFailureListener {

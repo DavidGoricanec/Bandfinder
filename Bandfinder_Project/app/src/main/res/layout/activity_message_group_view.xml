@@ -8,23 +8,57 @@
 
     <ImageView
         android:id="@+id/message_view_profilephoto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="103dp"
+        android:layout_height="107dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/message_view_Name"
-        android:layout_width="92dp"
-        android:layout_height="47dp"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/message_view_profilephoto"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/message_view_profilephoto" />
+
+    <TextView
+        android:id="@+id/message_view_Ort"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/message_view_profilephoto"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@+id/message_view_Name" />
+
+    <TextView
+        android:id="@+id/message_view_Instrument"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@+id/message_view_profilephoto"
+        app:layout_constraintTop_toBottomOf="@+id/message_view_Ort" />
 </androidx.constraintlayout.widget.ConstraintLayout>
