@@ -159,8 +159,6 @@ class MainActivity : AppCompatActivity() {
 
             iV_pfoilfoto.setImageBitmap(bitmap)
             btn_profile_photo.alpha= 0f;
-            //val draw_bitmap = BitmapDrawable(bitmap)
-            //btn_profile_photo.setBackgroundDrawable(draw_bitmap)
         }
     }
 
