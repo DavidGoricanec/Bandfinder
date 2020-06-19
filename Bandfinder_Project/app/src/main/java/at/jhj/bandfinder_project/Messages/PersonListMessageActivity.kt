@@ -29,7 +29,7 @@ class PersonListMessageActivity : AppCompatActivity() {
         verifyUserIsLoggedIn();
 
         supportActionBar?.title="Musiker in der Nähe!"
-        set_current_user()
+
     }
 
     private fun verifyUserIsLoggedIn()
@@ -41,6 +41,10 @@ class PersonListMessageActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
+        else {
+            set_current_user()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -121,7 +125,7 @@ class PersonListMessageActivity : AppCompatActivity() {
         }
         else
         {
-            throw Exception("getUsersFromDB, current_erpson is null")
+            throw Exception("getUsersFromDB, current_person is null")
         }
     }
 
