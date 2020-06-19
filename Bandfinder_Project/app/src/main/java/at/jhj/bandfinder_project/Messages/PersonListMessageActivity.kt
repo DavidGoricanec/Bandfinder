@@ -21,13 +21,15 @@ import kotlinx.android.synthetic.main.activity_person_list_message.*
 
 class PersonListMessageActivity : AppCompatActivity() {
 
+    var current_person : Person? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_person_list_message)
         verifyUserIsLoggedIn();
 
         supportActionBar?.title="Musiker in der Nähe!"
-        getUsersFromDB()
+        set_current_user()
     }
 
     private fun verifyUserIsLoggedIn()
@@ -55,46 +57,73 @@ class PersonListMessageActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun getUsersFromDB()
-        {
-        val db = FirebaseDatabase.getInstance().getReference("/users")
-        db.addListenerForSingleValueEvent(object : ValueEventListener
-        {
+    private fun set_current_user() {
+        val uid = FirebaseAuth.getInstance().uid
+        Log.d("MESSAGE", "Trying to get current_person for uid: ${uid}")
+        val db = FirebaseDatabase.getInstance().getReference("/users/$uid")
+
+        db.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
-                Log.e("PersonList", "oCanceledCalled")
+                Log.d("MESSAGE","OnCancelled called")
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                val adapter = GroupAdapter<ViewHolder>()
+                Log.d("MESSAGE","trying to parse user")
+                current_person= p0.getValue(Person::class.java)
+                Log.d("MESSAGE","Got Person: ${current_person?.uid}")
 
-                Log.d("PersonList","Starting to get Firebase DB data")
-
-                for (child in p0.children) {
-                    Log.d("PersonList", "${child.toString()}")
-                    val person = child.getValue(Person::class.java)
-
-                    if(person != null && person.uid != FirebaseAuth.getInstance().uid)
-                    {
-                        adapter.add(
-                            UserProfileItem(
-                                person
-                            )
-                        )
-                    }
-                    adapter.setOnItemClickListener { item, view ->
-                        val intent = Intent(view.context,ChatActivity::class.java)
-                        intent.putExtra("PERSON",(item as UserProfileItem).person)
-                        startActivity(intent)
-
-                        //Zuruek zur Hauptseite
-                        //finish()
-                    }
-                }
-
-                rV_writeMessage.adapter= adapter
+                //moved from onCreate to here, since it takes time for the DB to return the current user
+                getUsersFromDB()
             }
 
         })
     }
+
+    private fun getUsersFromDB() {
+        if (current_person != null) {
+            val db = FirebaseDatabase.getInstance().getReference("/users")
+            db.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                    Log.e("PersonList", "oCanceledCalled")
+                }
+
+                override fun onDataChange(p0: DataSnapshot) {
+                    val adapter = GroupAdapter<ViewHolder>()
+
+                    Log.d("PersonList", "Starting to get Firebase DB data")
+
+                    for (child in p0.children) {
+                        Log.d("PersonList", "${child.toString()}")
+                        val person = child.getValue(Person::class.java)
+
+                        if (person != null && person.uid != current_person?.uid && person.ort == current_person?.ort) {
+                            adapter.add(
+                                UserProfileItem(
+                                    person
+                                )
+                            )
+                        }
+                        adapter.setOnItemClickListener { item, view ->
+                            val intent = Intent(view.context, ChatActivity::class.java)
+                            intent.putExtra("PERSON", (item as UserProfileItem).person)
+                            intent.putExtra("CURRENT_PERSON", current_person)
+                            startActivity(intent)
+
+                            //Zuruek zur Hauptseite
+                            //finish()
+                        }
+                    }
+
+                    rV_writeMessage.adapter = adapter
+                }
+
+            })
+        }
+        else
+        {
+            throw Exception("getUsersFromDB, current_erpson is null")
+        }
+    }
+
 
 }

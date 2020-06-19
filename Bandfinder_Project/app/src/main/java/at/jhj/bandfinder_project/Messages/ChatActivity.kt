@@ -28,8 +28,10 @@ class ChatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
 
         person = intent.getParcelableExtra<Person>("PERSON")
+        current_person = intent.getParcelableExtra<Person>("CURRENT_PERSON")
 
-        set_current_user()
+
+        msg_added()
 
         supportActionBar?.title = "Chat mit ${person?.name}"
 
@@ -41,27 +43,6 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    private fun set_current_user() {
-        val uid = FirebaseAuth.getInstance().uid
-        Log.d("MESSAGE", "Trying to get current_person for uid: ${uid}")
-        val db = FirebaseDatabase.getInstance().getReference("/users/$uid")
-
-        db.addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-                Log.d("MESSAGE","OnCancelled called")
-            }
-
-            override fun onDataChange(p0: DataSnapshot) {
-                Log.d("MESSAGE","trying to parse user")
-                current_person= p0.getValue(Person::class.java)
-                Log.d("MESSAGE","Got Person: ${current_person?.uid}")
-
-                //moved from onCreate to here, since it takes time for the DB to return the current user
-                msg_added()
-            }
-
-        })
-    }
 
     private fun msg_added() {
         if (person != null && current_person != null) {
