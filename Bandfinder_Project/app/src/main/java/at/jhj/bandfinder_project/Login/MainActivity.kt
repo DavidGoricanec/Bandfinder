@@ -76,6 +76,8 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
+        Toast.makeText(this,"Upload und Registrierung läuft, bitte warten...", Toast.LENGTH_SHORT).show()
+
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener{
                 if(it.isSuccessful)
@@ -93,8 +95,6 @@ class MainActivity : AppCompatActivity() {
                 Log.e("Main", "User creation Error: ${it.message}")
                 Toast.makeText(this,"Benutzer konnte nicht erstellt werden. ${it.message}",Toast.LENGTH_SHORT).show()
             }
-
-        Toast.makeText(this,"Registrierung beendet", Toast.LENGTH_SHORT).show()
     }
 
     private fun uploadProfilePhoto()
@@ -136,6 +136,7 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 Log.d("Main", "User saved to Firebase")
 
+                Toast.makeText(this,"Willkommen bei Bandfinder!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, PersonListMessageActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)

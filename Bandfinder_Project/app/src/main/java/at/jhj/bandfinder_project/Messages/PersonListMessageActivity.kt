@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import at.jhj.bandfinder_project.Group_ViewHolders.UserProfileItem
 import at.jhj.bandfinder_project.Login.LoginActivity
 import at.jhj.bandfinder_project.Models.Person
@@ -125,7 +126,8 @@ class PersonListMessageActivity : AppCompatActivity() {
         }
         else
         {
-            throw Exception("getUsersFromDB, current_person is null")
+            Log.e("MESSAGE","getUsersFromDB, current_person is null")
+            Toast.makeText(this,"Fehler! Ihr Profil konnte nicht geladen werden", Toast.LENGTH_LONG).show()
         }
     }
 

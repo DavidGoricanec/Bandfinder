@@ -4,5 +4,5 @@ data class Nachricht(val msg_id: String = ""
                      ,val from_id: String = ""
                      ,val to_id: String = ""
                      ,val msg: String = ""
-        ,val timestmp: Long = 0
+                     ,val timestmp: Long = 0
 )

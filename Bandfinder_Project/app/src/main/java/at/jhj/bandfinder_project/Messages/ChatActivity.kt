@@ -52,15 +52,15 @@ class ChatActivity : AppCompatActivity() {
 
             db.addChildEventListener(object : ChildEventListener {
                 override fun onCancelled(p0: DatabaseError) {
-                    throw Exception("Message Canceled, this should not happen")
+                    Log.e("MESSAGE","Message Canceled, this should not happen")
                 }
 
                 override fun onChildMoved(p0: DataSnapshot, p1: String?) {
-                    throw Exception("Message Moved, this should not happen")
+                    Log.e("MESSAGE","Message Moved, this should not happen")
                 }
 
                 override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                    throw Exception("Message Changed, this should not happen")
+                    Log.e("MESSAGE","Message Changed, this should not happen")
                 }
 
                 override fun onChildAdded(p0: DataSnapshot, p1: String?) {
@@ -80,7 +80,7 @@ class ChatActivity : AppCompatActivity() {
                 }
 
                 override fun onChildRemoved(p0: DataSnapshot) {
-                    throw Exception("Message Removed, this should not happen")
+                    Log.e("MESSAGE","Message Removed, this should not happen")
                 }
 
             })
@@ -88,7 +88,7 @@ class ChatActivity : AppCompatActivity() {
         else
         {
             Log.e("MESSAGE", "Person: ${person?.uid} , current_person: ${current_person?.uid}")
-            throw Exception("Message send, Person is null")
+            Log.e("MESSAGE","Message send, Person is null")
         }
     }
 
@@ -127,7 +127,7 @@ class ChatActivity : AppCompatActivity() {
         else
         {
             Log.e("MESSAGE", "Person: ${person?.uid} , current_person: ${current_person?.uid}")
-            throw Exception("Message send, Person is null")
+            Log.e("MESSAGE","Message send, Person is null")
         }
     }
 }
