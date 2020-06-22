@@ -102,6 +102,7 @@ class MainActivity : AppCompatActivity() {
         if (v_profilephotoUri == null)
         {
             Log.w("Main", "No profilephoto avaiable")
+            Toast.makeText(this,"Kein Profilphoto ausgewählt", Toast.LENGTH_SHORT).show()
             return
         }
 
