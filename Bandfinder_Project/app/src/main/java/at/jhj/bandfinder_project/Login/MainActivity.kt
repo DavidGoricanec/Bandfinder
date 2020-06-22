@@ -117,7 +117,10 @@ class MainActivity : AppCompatActivity() {
 
                 saveUserToDatabase(it.toString())
             }
-        }.addOnFailureListener{ Log.e("Main" ,"Error: Uploading Photo failed ${it.message}")}
+        }.addOnFailureListener{
+            Log.e("Main" ,"Error: Uploading Photo failed ${it.message}")
+            Toast.makeText(this,"Fehler beim hochladen des Profilphotos", Toast.LENGTH_SHORT).show()
+        }
 
     }
 
